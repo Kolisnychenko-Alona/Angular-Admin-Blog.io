@@ -1,0 +1,8 @@
+<section>
+   <div class="blog" *ngFor="let blog of blogs">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXw1fAvPCyRm1soYTJ-VPqNlLi07AM_G1LAw&usqp=CAU" alt="Все буде Україна">
+      <div class="author">{{blog.author}}</div>
+      <a href="#" class="title">{{blog.title}}</a>
+      <div class="text">{{blog.text | slice:0:30}} <span *ngIf="blog.text.length>30">...</span></div>
+   </div>
+</section>

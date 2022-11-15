@@ -1,0 +1,34 @@
+<section>
+   <div class="left">Blogs</div>
+   <div class="right">
+      <form>
+         <input type="text" class="inputFilds" name="inputFilds" [(ngModel)]="title" placeholder="title here...">
+         <textarea name="text" class="inputFilds" [(ngModel)]="text" placeholder="text here..."></textarea>
+         <input type="text" class="inputFilds" name="inputFilds" [(ngModel)]="author" placeholder="author here...">
+         <button [disabled]="!title || !text ||!author" *ngIf="!editStatus" (click)="addBlog()">Add</button>
+         <button [disabled]="!title || !text ||!author" class="editBtn" *ngIf="editStatus" (click)="updateBlog()">Save edit</button>
+      </form>
+      <table>
+         <thead>
+            <tr>
+               <th>#</th>
+               <th>Title</th>
+               <th>Text</th>
+               <th>Author</th>
+               <th>Edit</th>
+               <th>Delete</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr *ngFor="let blog of adminBlogs">
+               <td><b>{{blog.id}}</b></td>
+               <td>{{blog.title}}</td>
+               <td>{{blog.text | slice:0:30}}<span *ngIf="blog.text.length>30">...</span></td>
+               <td>{{blog.author}}</td>
+               <td><button (click)="editBlog(blog)">Edit</button></td>
+               <td><button class="deleteBtn" (click)="deleteBlog(blog)">Delete</button></td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+</section>
